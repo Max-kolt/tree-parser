@@ -88,8 +88,7 @@ const addNewBranch = (id, name, price, sorthead, node, root) => {
   const branch = document.createElement("div");
   root.appendChild(branch);
   branch.outerHTML = `
-    <div id="${id}" class="branch" style="
-      --sorthead: ${sorthead * 2}px;
+    <div id="${id}" class="branch" style=";
     ">
       ${node == 1 ? `<img src="./arrow.svg">` : ""}
       <span>

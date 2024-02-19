@@ -9,6 +9,9 @@ div.branch {
 .childs {
   position: relative;
   left: 30px;
+  padding-left: 8px;
+  margin: 4px 0px;
+  border-left: 1px solid gray;
 }
 
 img {
@@ -24,4 +27,5 @@ img.hide ~ .childs {
   opacity: 0;
   transform: scaleY(0);
   max-height: 0px;
+  margin: 0px;
 }
