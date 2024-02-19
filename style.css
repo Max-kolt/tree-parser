@@ -1,0 +1,27 @@
+.tree {
+  position: relative;
+}
+
+div.branch {
+  width: 100vw;
+}
+
+.childs {
+  position: relative;
+  left: 30px;
+}
+
+img {
+  transition: 0.3s;
+  width: 10px;
+}
+
+img.hide {
+  transform: rotate(90deg);
+}
+
+img.hide ~ .childs {
+  opacity: 0;
+  transform: scaleY(0);
+  max-height: 0px;
+}
