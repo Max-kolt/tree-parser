@@ -103,7 +103,7 @@ const addNewBranch = (id, name, price, sorthead, node, root) => {
 const rootElement = document.querySelector(".tree");
 var toRender = data.services;
 
-function render(head_id = null) {
+function render() {
   while (toRender.length > 0) {
     const element = toRender[0];
     let newChilds = findAndSortSimilar(element.head);
@@ -123,14 +123,14 @@ function render(head_id = null) {
   }
 }
 
-// поиск элементов узла
-function findAndSortSimilar(head_id) {
+// Поиск элементов одного узла
+function findAndSortSimilar(headId) {
   let similarObjects = [];
   let index = 0;
 
   while (index < toRender.length) {
     const element = toRender[index];
-    if (element.head == head_id) {
+    if (element.head == headId) {
       similarObjects.push(element);
       toRender.splice(index, 1);
       continue;
@@ -138,11 +138,8 @@ function findAndSortSimilar(head_id) {
     index++;
   }
   similarObjects.sort((a, b) => {
-    if (a.sorthead > b.sorthead) {
-      return 1;
-    } else {
-      return -1;
-    }
+    if (a.sorthead > b.sorthead) return 1;
+    else return -1;
   });
 
   return similarObjects;
@@ -150,6 +147,8 @@ function findAndSortSimilar(head_id) {
 
 render();
 
+// Функционал для скрытия и раскрытия узла 
+// при нажатии на иконку стрелки
 var btns = document.getElementsByTagName("img");
 
 for (let index = 0; index < btns.length; index++) {
