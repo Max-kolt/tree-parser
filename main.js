@@ -100,14 +100,14 @@ const addNewBranch = (id, name, price, sorthead, node, root) => {
 };
 
 const rootElement = document.querySelector(".tree");
-var to_render = data.services;
+var toRender = data.services;
 
-function render(head_id = null) {
-  while (to_render.length > 0) {
-    const element = to_render[0];
-    let new_childs = findAndSortSimilar(element.head);
+function render() {
+  while (toRender.length > 0) {
+    const element = toRender[0];
+    let newChilds = findAndSortSimilar(element.head);
 
-    new_childs.map((value) => {
+    newChilds.map((value) => {
       addNewBranch(
         value.id,
         value.name,
@@ -122,33 +122,32 @@ function render(head_id = null) {
   }
 }
 
-// поиск элементов узла
-function findAndSortSimilar(head_id) {
-  let similar_objects = [];
+// Поиск элементов одного узла
+function findAndSortSimilar(headId) {
+  let similarObjects = [];
   let index = 0;
 
-  while (index < to_render.length) {
-    const element = to_render[index];
-    if (element.head == head_id) {
-      similar_objects.push(element);
-      to_render.splice(index, 1);
+  while (index < toRender.length) {
+    const element = toRender[index];
+    if (element.head == headId) {
+      similarObjects.push(element);
+      toRender.splice(index, 1);
       continue;
     }
     index++;
   }
-  similar_objects.sort((a, b) => {
-    if (a.sorthead > b.sorthead) {
-      return 1;
-    } else {
-      return -1;
-    }
+  similarObjects.sort((a, b) => {
+    if (a.sorthead > b.sorthead) return 1;
+    else return -1;
   });
 
-  return similar_objects;
+  return similarObjects;
 }
 
 render();
 
+// Функционал для скрытия и раскрытия узла 
+// при нажатии на иконку стрелки
 var btns = document.getElementsByTagName("img");
 
 for (let index = 0; index < btns.length; index++) {
